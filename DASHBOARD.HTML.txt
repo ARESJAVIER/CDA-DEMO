@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Panel de Vehículos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Mis Vehículos</h1>
+  <ul id="vehiculos">
+    <li>ABC123 - Revisión vence: 15/11/2025</li>
+    <li>XYZ789 - Revisión vence: 02/01/2026</li>
+  </ul>
+  <a href="citas.html">Agendar cita</a>
+</body>
+</html>

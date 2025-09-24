@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login CDA Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Ingreso CDA</h1>
+  <input id="cedula" placeholder="Número de cédula">
+  <input id="placa" placeholder="Placa del vehículo">
+  <button onclick="login()">Entrar</button>
+
+  <script src="app.js"></script>
+</body>
+</html>
