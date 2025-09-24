@@ -1,16 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Login CDA Demo</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Demo – Página de Inicio</title>
+
+  <!-- Bootstrap para diseño limpio -->
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate.css para animaciones rápidas -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <style>
+    /* Personalización básica */
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    .hero {
+      background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),
+                  url('https://source.unsplash.com/1600x600/?technology,business') center/cover;
+      color: white;
+      padding: 120px 20px;
+      text-align: center;
+    }
+    .feature-icon {
+      font-size: 3rem;
+      color: #0d6efd;
+    }
+    footer {
+      background:#f8f9fa;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Ingreso CDA</h1>
-  <input id="cedula" placeholder="Número de cédula">
-  <input id="placa" placeholder="Placa del vehículo">
-  <button onclick="login()">Entrar</button>
 
-  <script src="app.js"></script>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">MiDemo</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero animate__animated animate__fadeIn">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Bienvenido a Nuestra Plataforma</h1>
+    <p class="lead">Un lugar para mostrar tu proyecto con estilo y funcionalidades modernas.</p>
+    <a href="#servicios" class="btn btn-primary btn-lg mt-3">Ver más</a>
+  </div>
+</section>
+
+<!-- SECCIÓN DE SERVICIOS -->
+<section id="servicios" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4 fw-bold">Lo que ofrecemos</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm animate__animated animate__fadeInUp">
+          <div class="feature-icon mb-3">💡</div>
+          <h5 class="fw-bold">Idea innovadora</h5>
+          <p>Presenta la propuesta central de tu demo, resaltando su valor para el cliente.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="feature-icon mb-3">⚡</div>
+          <h5 class="fw-bold">Rendimiento</h5>
+          <p>Muestra rapidez y confiabilidad, ideal para impresionar en una presentación.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="feature-icon mb-3">📱</div>
+          <h5 class="fw-bold">Responsive</h5>
+          <p>Totalmente adaptable a móviles, tablets y escritorio.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4">Contáctanos</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form>
+          <div class="mb-3">
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" placeholder="Tu nombre">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo</label>
+            <input type="email" class="form-control" placeholder="tu@correo.com">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mensaje</label>
+            <textarea class="form-control" rows="4"></textarea>
+          </div>
+          <button class="btn btn-primary w-100">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center">
+  <div class="container">
+    <p class="mb-0">© 2025 MiDemo. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
