@@ -7,43 +7,51 @@
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <h1>CDA DEMO - Usuario</h1>
 
-  <!-- Login Usuario -->
-  <div id="userLoginContainer">
-    <form id="userLoginForm">
-      <input type="text" id="userEmail" placeholder="Correo electrónico" required>
-      <input type="password" id="userPass" placeholder="Contraseña" required>
-      <button type="submit">Ingresar</button>
-      <p id="userLoginError" class="error"></p>
-    </form>
-  </div>
+  <div class="container">
+    <!-- Logo del CDA -->
+    <img src="assets/logo-cda.png" alt="Logo CDA" class="logo">
 
-  <!-- Perfil Usuario -->
-  <div id="userAppContainer" style="display:none">
-    <button id="userLogoutBtn">Cerrar Sesión</button>
-    <h2>Bienvenido, <span id="userNameDisplay"></span></h2>
+    <h1>CDA DEMO</h1>
 
-    <section>
-      <h3>Mis Vehículos</h3>
-      <div id="vehicleList"></div>
-      <button id="addVehicleBtn">Agregar Vehículo</button>
-    </section>
+    <!-- Login Usuario -->
+    <div id="userLoginContainer">
+      <form id="userLoginForm">
+        <input type="text" id="userEmail" placeholder="Correo electrónico" required>
+        <input type="password" id="userPass" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+        <p id="userLoginError" class="error"></p>
+      </form>
+    </div>
 
-    <section>
-      <h3>Citas</h3>
-      <button id="scheduleBtn">Agendar Revisión</button>
-    </section>
+    <!-- Perfil Usuario -->
+    <div id="userAppContainer" style="display:none">
+      <button id="userLogoutBtn" class="logout-btn">Cerrar Sesión</button>
+      <h2>Bienvenido, <span id="userNameDisplay"></span></h2>
 
-    <section>
-      <h3>Servicios Adicionales</h3>
-      <ul>
-        <li>Lavado de vehículos</li>
-        <li>Latonería y pintura</li>
-        <li>Accesorios y lujo</li>
-      </ul>
-      <a href="https://wa.me/573001234567" target="_blank">Consultar por WhatsApp</a>
-    </section>
+      <div class="section">
+        <h3>Mis Vehículos</h3>
+        <div id="vehicleList"></div>
+        <button id="addVehicleBtn">Agregar Vehículo</button>
+      </div>
+
+      <div class="section">
+        <h3>Citas</h3>
+        <button id="scheduleBtn">Agendar Revisión</button>
+      </div>
+
+      <div class="section">
+        <h3>Servicios Adicionales</h3>
+        <ul>
+          <li>Lavado de vehículos</li>
+          <li>Latonería y pintura</li>
+          <li>Accesorios y lujo</li>
+        </ul>
+        <a href="https://wa.me/573001234567" target="_blank" class="btn-link">
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </div>
   </div>
 
   <script src="assets/app.js"></script>
