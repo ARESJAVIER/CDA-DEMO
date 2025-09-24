@@ -1,68 +1,51 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CDA DEMO — App usuario</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDA DEMO - App Usuario</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="bg-light">
-<div class="container py-4">
-<header class="d-flex justify-content-between align-items-center mb-3">
-<h3>CDA DEMO — App</h3>
-<a class="btn btn-outline-secondary" href="dashboard.html">Ir a Dashboard (admin)</a>
-</header>
+<body>
+  <h1>CDA DEMO - Usuario</h1>
 
+  <!-- Login Usuario -->
+  <div id="userLoginContainer">
+    <form id="userLoginForm">
+      <input type="text" id="userEmail" placeholder="Correo electrónico" required>
+      <input type="password" id="userPass" placeholder="Contraseña" required>
+      <button type="submit">Ingresar</button>
+      <p id="userLoginError" class="error"></p>
+    </form>
+  </div>
 
-<!-- Login -->
-<div id="loginView" class="card p-3 mb-3">
-<h5>Ingresar</h5>
-<form id="loginForm" class="row g-2">
-<div class="col-12">
-<input id="loginEmail" class="form-control" placeholder="Correo" required>
-</div>
-<div class="col-12">
-<input id="loginPassword" type="password" class="form-control" placeholder="Contraseña" required>
-</div>
-<div class="col-12 d-flex justify-content-between">
-<button class="btn btn-primary">Entrar</button>
-<button id="toRegister" type="button" class="btn btn-link">Crear cuenta</button>
-</div>
-</form>
-</div>
+  <!-- Perfil Usuario -->
+  <div id="userAppContainer" style="display:none">
+    <button id="userLogoutBtn">Cerrar Sesión</button>
+    <h2>Bienvenido, <span id="userNameDisplay"></span></h2>
 
+    <section>
+      <h3>Mis Vehículos</h3>
+      <div id="vehicleList"></div>
+      <button id="addVehicleBtn">Agregar Vehículo</button>
+    </section>
 
-<!-- Register -->
-<div id="registerView" class="card p-3 mb-3 d-none">
-<h5>Crear cuenta</h5>
-<form id="registerForm" class="row g-2">
-<div class="col-12">
-<input id="regName" class="form-control" placeholder="Nombre completo" required>
-</div>
-<div class="col-12">
-<input id="regPhone" class="form-control" placeholder="Teléfono de contacto" required>
-</div>
-<div class="col-12">
-<input id="regEmail" class="form-control" placeholder="Correo" required>
-</div>
-<div class="col-12">
-<input id="regAddress" class="form-control" placeholder="Dirección">
-</div>
-<div class="col-12">
-<input id="regPassword" type="password" class="form-control" placeholder="Contraseña" required>
-</div>
-<div class="col-12 d-flex justify-content-between">
-<button class="btn btn-success">Crear</button>
-<button id="toLogin" type="button" class="btn btn-link">Volver</button>
-</div>
-</form>
-</div>
+    <section>
+      <h3>Citas</h3>
+      <button id="scheduleBtn">Agendar Revisión</button>
+    </section>
 
+    <section>
+      <h3>Servicios Adicionales</h3>
+      <ul>
+        <li>Lavado de vehículos</li>
+        <li>Latonería y pintura</li>
+        <li>Accesorios y lujo</li>
+      </ul>
+      <a href="https://wa.me/573001234567" target="_blank">Consultar por WhatsApp</a>
+    </section>
+  </div>
 
-<!-- Main app (after login) -->
-<div id="appView" class="d-none">
-<div class="d-flex align-items-center mb-3">
-<img id="profilePic" src="" alt="avatar" class="rounded-circle me-2" width="64" height="64" onerror="this.style.display='none'">
-<div>
+  <script src="assets/app.js"></script>
+</body>
 </html>
