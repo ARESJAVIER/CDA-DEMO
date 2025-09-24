@@ -1,220 +1,232 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CDA Dashboard</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard CDA</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-    body{display:flex;min-height:100vh;background:#f0f2f5;}
-
-    /* ===== SIDEBAR ===== */
-    .sidebar{
-      width:250px;
-      background:#002D72;
-      color:#fff;
-      padding:20px 0;
-      display:flex;
-      flex-direction:column;
-      position:fixed;
-      height:100%;
-      transition:0.3s;
+    body { background-color:#f5f6fa; }
+    .sidebar {
+      width: 240px;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      background: #343a40;
+      color: #fff;
+      padding-top: 1rem;
     }
-    .sidebar h2{
-      text-align:center;
-      margin-bottom:30px;
-      font-weight:600;
+    .sidebar a {
+      color: #adb5bd;
+      display: block;
+      padding: .75rem 1rem;
+      text-decoration: none;
     }
-    .sidebar ul{
-      list-style:none;
-      padding:0;
+    .sidebar a:hover, .sidebar a.active {
+      background: #495057;
+      color: #fff;
     }
-    .sidebar ul li{
-      margin-bottom:12px;
+    .content {
+      margin-left: 240px;
+      padding: 2rem;
     }
-    .sidebar ul li a{
-      display:flex;
-      align-items:center;
-      color:#fff;
-      padding:14px 20px;
-      text-decoration:none;
-      font-size:1rem;
-      border-radius:8px;
-      transition:0.3s;
-    }
-    .sidebar ul li a i{
-      margin-right:15px;
-      font-size:1.2rem;
-    }
-    .sidebar ul li a:hover,
-    .sidebar ul li a.active{
-      background:#00E0FF;
-      color:#002D72;
-    }
-
-    /* ===== CONTENT ===== */
-    .content{
-      margin-left:250px;
-      padding:30px;
-      width:100%;
-      transition:0.3s;
-    }
-    .content header{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      margin-bottom:20px;
-    }
-    header h1{color:#002D72;font-size:1.8rem;}
-    .user-info{
-      display:flex;
-      align-items:center;
-    }
-    .user-info img{
-      width:40px;height:40px;border-radius:50%;margin-right:10px;
-    }
-
-    /* ===== DASHBOARD CARDS ===== */
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:20px;
-      margin-top:20px;
-    }
-    .card{
-      background:#fff;
-      padding:25px;
-      border-radius:12px;
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      text-align:center;
-      transition:0.3s;
-      cursor:pointer;
-    }
-    .card:hover{
-      transform:translateY(-5px);
-      box-shadow:0 8px 16px rgba(0,0,0,0.2);
-    }
-    .card i{
-      font-size:2.2rem;
-      color:#002D72;
-      margin-bottom:10px;
-    }
-    .card h3{
-      font-size:1.2rem;
-      margin-bottom:8px;
-      color:#002D72;
-    }
-    .card p{
-      font-size:0.9rem;
-      color:#555;
-    }
-
-    /* Responsive */
-    @media(max-width:768px){
-      .sidebar{width:70px;}
-      .sidebar h2{display:none;}
-      .sidebar ul li a span{display:none;}
-      .sidebar ul li a i{margin:0 auto;}
-      .content{margin-left:70px;}
-    }
+    .table thead {background-color:#343a40;color:#fff;}
   </style>
 </head>
 <body>
 
-<!-- ===== Sidebar ===== -->
-<div class="sidebar">
-  <h2>CDA</h2>
-  <ul>
-    <li><a href="#" class="active" onclick="showSection('inicio')"><i class="fas fa-home"></i><span>Inicio</span></a></li>
-    <li><a href="#" onclick="showSection('vehiculos')"><i class="fas fa-car"></i><span>Mis Vehículos</span></a></li>
-    <li><a href="#" onclick="showSection('citas')"><i class="fas fa-calendar-check"></i><span>Agendar Citas</span></a></li>
-    <li><a href="#" onclick="showSection('notificaciones')"><i class="fas fa-bell"></i><span>Notificaciones</span></a></li>
-    <li><a href="#" onclick="showSection('chat')"><i class="fas fa-comments"></i><span>Chat / Soporte</span></a></li>
-    <li><a href="#" onclick="showSection('config')"><i class="fas fa-cog"></i><span>Configuración</span></a></li>
-  </ul>
-</div>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <h4 class="text-center text-white mb-4">CDA Dashboard</h4>
+    <a href="#" class="active" data-section="usuarios">Usuarios</a>
+    <a href="#" data-section="vehiculos">Vehículos</a>
+    <a href="#" data-section="notificaciones">Notificaciones</a>
+    <a href="#" data-section="agenda">Agenda</a>
+    <a href="#" data-section="reportes">Reportes</a>
+  </nav>
 
-<!-- ===== Content ===== -->
-<div class="content">
-  <header>
-    <h1 id="section-title">Inicio</h1>
-    <div class="user-info">
-      <img src="https://i.pravatar.cc/40" alt="Usuario">
-      <span>Hola, Usuario</span>
+  <!-- Main content -->
+  <main class="content">
+    <!-- Usuarios -->
+    <section id="usuarios" class="section">
+      <h2>Gestión de Usuarios</h2>
+      <p class="text-muted">Crear, editar o eliminar registros de propietarios.</p>
+      <button class="btn btn-primary mb-3" onclick="openUserModal()">➕ Nuevo Usuario</button>
+
+      <div class="table-responsive">
+        <table class="table table-bordered align-middle">
+          <thead>
+            <tr>
+              <th>ID</th><th>Nombre</th><th>Tipo</th><th>Cédula/NIT</th>
+              <th>Teléfono</th><th>Email</th><th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="usuariosTable">
+            <!-- Filas generadas por JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Vehículos -->
+    <section id="vehiculos" class="section d-none">
+      <h2>Gestión de Vehículos</h2>
+      <p>Placa, marca, modelo, año, última revisión y vencimiento.</p>
+      <!-- Aquí iría la tabla o formulario de vehículos -->
+    </section>
+
+    <!-- Notificaciones -->
+    <section id="notificaciones" class="section d-none">
+      <h2>Notificaciones Automáticas</h2>
+      <p>Configura recordatorios por WhatsApp, SMS y email.</p>
+    </section>
+
+    <!-- Agenda -->
+    <section id="agenda" class="section d-none">
+      <h2>Agenda de Citas</h2>
+      <p>Calendario interactivo con disponibilidad por día y hora.</p>
+    </section>
+
+    <!-- Reportes -->
+    <section id="reportes" class="section d-none">
+      <h2>Reportes</h2>
+      <p>Clientes activos, revisiones vencidas, próximos vencimientos.</p>
+    </section>
+  </main>
+
+  <!-- Modal Crear/Editar Usuario -->
+  <div class="modal fade" id="userModal" tabindex="-1">
+    <div class="modal-dialog">
+      <form class="modal-content" onsubmit="saveUser(event)">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Nuevo Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" id="userId">
+          <div class="mb-2">
+            <label class="form-label">Nombre</label>
+            <input type="text" id="nombre" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Tipo Usuario</label>
+            <select id="tipo" class="form-select" required>
+              <option value="persona">Persona</option>
+              <option value="empresa">Empresa</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Cédula/NIT</label>
+            <input type="text" id="documento" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Teléfono</label>
+            <input type="text" id="telefono" class="form-control" required>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Email</label>
+            <input type="email" id="email" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
     </div>
-  </header>
+  </div>
 
-  <!-- Secciones dinámicas -->
-  <section id="inicio" class="cards">
-    <div class="card">
-      <i class="fas fa-car"></i>
-      <h3>Gestión de Vehículos</h3>
-      <p>Administra todos los vehículos registrados a tu nombre o empresa.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-calendar-check"></i>
-      <h3>Agenda de Citas</h3>
-      <p>Programa revisiones y controla las fechas de vencimiento.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-bell"></i>
-      <h3>Notificaciones</h3>
-      <p>Recibe alertas por WhatsApp, correo o SMS sobre vencimientos.</p>
-    </div>
-    <div class="card">
-      <i class="fas fa-comments"></i>
-      <h3>Chat/Soporte</h3>
-      <p>Habla con un asistente virtual para dudas o agendamiento rápido.</p>
-    </div>
-  </section>
+  <!-- Bootstrap JS + Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Datos simulados
+    let usuarios = [
+      {id:1,nombre:"Juan Pérez",tipo:"persona",doc:"123456789",tel:"3001112233",email:"juan@mail.com"},
+      {id:2,nombre:"Transportes XYZ",tipo:"empresa",doc:"900123456",tel:"3205556677",email:"contacto@xyz.com"}
+    ];
 
-  <section id="vehiculos" style="display:none">
-    <h2>Mis Vehículos</h2>
-    <p>Aquí podrás registrar varios carros, consultar placas, fechas de revisión y más.</p>
-    <!-- Aquí irán tablas, formularios y acciones CRUD -->
-  </section>
+    const usuariosTable = document.getElementById('usuariosTable');
+    const modal = new bootstrap.Modal('#userModal');
 
-  <section id="citas" style="display:none">
-    <h2>Agendar Citas</h2>
-    <p>Formulario para agendar citas (puedes integrar el formulario del index aquí).</p>
-  </section>
+    function renderUsuarios(){
+      usuariosTable.innerHTML = usuarios.map(u => `
+        <tr>
+          <td>${u.id}</td>
+          <td>${u.nombre}</td>
+          <td>${u.tipo}</td>
+          <td>${u.doc}</td>
+          <td>${u.tel}</td>
+          <td>${u.email}</td>
+          <td>
+            <button class="btn btn-sm btn-warning" onclick="editUser(${u.id})">Editar</button>
+            <button class="btn btn-sm btn-danger" onclick="deleteUser(${u.id})">Eliminar</button>
+          </td>
+        </tr>`).join('');
+    }
 
-  <section id="notificaciones" style="display:none">
-    <h2>Notificaciones</h2>
-    <p>Listado de alertas y recordatorios programados por placa y fecha de vencimiento.</p>
-  </section>
+    function openUserModal(){
+      document.getElementById('modalTitle').innerText = "Nuevo Usuario";
+      document.getElementById('userId').value = "";
+      document.getElementById('nombre').value = "";
+      document.getElementById('tipo').value = "persona";
+      document.getElementById('documento').value = "";
+      document.getElementById('telefono').value = "";
+      document.getElementById('email').value = "";
+      modal.show();
+    }
 
-  <section id="chat" style="display:none">
-    <h2>Chat / Soporte</h2>
-    <p>Integración de chatbot o WhatsApp API para consultas en tiempo real.</p>
-  </section>
+    function saveUser(e){
+      e.preventDefault();
+      const id = document.getElementById('userId').value;
+      const nuevo = {
+        id: id? parseInt(id) : Date.now(),
+        nombre: document.getElementById('nombre').value,
+        tipo: document.getElementById('tipo').value,
+        doc: document.getElementById('documento').value,
+        tel: document.getElementById('telefono').value,
+        email: document.getElementById('email').value
+      };
+      if(id){
+        usuarios = usuarios.map(u=> u.id==id? nuevo : u);
+      } else {
+        usuarios.push(nuevo);
+      }
+      renderUsuarios();
+      modal.hide();
+    }
 
-  <section id="config" style="display:none">
-    <h2>Configuración</h2>
-    <p>Cambiar contraseña, usuario (cédula), o administrar empresa con múltiples vehículos.</p>
-  </section>
+    function editUser(id){
+      const u = usuarios.find(x=>x.id==id);
+      document.getElementById('modalTitle').innerText = "Editar Usuario";
+      document.getElementById('userId').value = u.id;
+      document.getElementById('nombre').value = u.nombre;
+      document.getElementById('tipo').value = u.tipo;
+      document.getElementById('documento').value = u.doc;
+      document.getElementById('telefono').value = u.tel;
+      document.getElementById('email').value = u.email;
+      modal.show();
+    }
 
-</div>
+    function deleteUser(id){
+      if(confirm("¿Eliminar este usuario?")){
+        usuarios = usuarios.filter(u=>u.id!=id);
+        renderUsuarios();
+      }
+    }
 
-<script>
-function showSection(id){
-  // Quitar activo de menú
-  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
-  // Asignar activo al link correspondiente
-  event.target.closest('a').classList.add('active');
+    // Navegación lateral
+    document.querySelectorAll('.sidebar a').forEach(link=>{
+      link.addEventListener('click', e=>{
+        e.preventDefault();
+        document.querySelectorAll('.sidebar a').forEach(l=>l.classList.remove('active'));
+        link.classList.add('active');
+        const target = link.dataset.section;
+        document.querySelectorAll('.section').forEach(s=> s.classList.add('d-none'));
+        document.getElementById(target).classList.remove('d-none');
+      });
+    });
 
-  // Mostrar sección
-  document.querySelectorAll('.content section').forEach(sec=>sec.style.display='none');
-  document.getElementById(id).style.display='block';
-
-  // Cambiar título
-  document.getElementById('section-title').innerText =
-    document.getElementById(id).querySelector('h2')?.innerText || 'Inicio';
-}
-</script>
-
+    renderUsuarios();
+  </script>
 </body>
 </html>
-
