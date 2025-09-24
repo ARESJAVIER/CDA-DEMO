@@ -17,7 +17,7 @@
 //  Credenciales del Administrador
 // ================================
 const ADMIN_USER = "admin";      // <-- Cambia aquí el usuario si lo deseas
-const ADMIN_PASS = "admin123";   // <-- Cambia aquí la contraseña si lo deseas
+const ADMIN_PASS = "123456";   // <-- Cambia aquí la contraseña si lo deseas
 
 // ================================
 //  Lógica de Login y Sesión
@@ -291,4 +291,5 @@ function showSection(id){
 
 </body>
 </html>
+
 
