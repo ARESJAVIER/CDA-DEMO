@@ -9,7 +9,66 @@
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
     body{display:flex;min-height:100vh;background:#f0f2f5;}
+/***************************************************
+ *   CDA DEMO - Dashboard Login & Gestión Básica   *
+ ***************************************************/
 
+// ================================
+//  Credenciales del Administrador
+// ================================
+const ADMIN_USER = "admin";      // <-- Cambia aquí el usuario si lo deseas
+const ADMIN_PASS = "admin123";   // <-- Cambia aquí la contraseña si lo deseas
+
+// ================================
+//  Lógica de Login y Sesión
+// ================================
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Captura de elementos del DOM
+  const loginForm        = document.getElementById("adminLoginForm");
+  const loginError       = document.getElementById("loginError");
+  const dashboardSection = document.getElementById("dashboardContainer");
+  const loginSection     = document.getElementById("loginContainer");
+  const logoutBtn        = document.getElementById("logoutBtn");
+
+  // ------------------------------
+  //  Evento de inicio de sesión
+  // ------------------------------
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const user = document.getElementById("adminUser").value.trim();
+    const pass = document.getElementById("adminPass").value.trim();
+
+    if (user === ADMIN_USER && pass === ADMIN_PASS) {
+      // Guardar sesión en el navegador
+      sessionStorage.setItem("adminLogged", "true");
+
+      // Mostrar dashboard y ocultar login
+      loginSection.style.display = "none";
+      dashboardSection.style.display = "block";
+      loginError.textContent = "";
+    } else {
+      loginError.textContent = "❌ Usuario o contraseña incorrectos";
+    }
+  });
+
+  // ------------------------------
+  //  Evento de cierre de sesión
+  // ------------------------------
+  logoutBtn.addEventListener("click", function () {
+    sessionStorage.removeItem("adminLogged");
+    dashboardSection.style.display = "none";
+    loginSection.style.display = "block";
+  });
+
+  // ------------------------------
+  //  Mantener sesión si ya está logueado
+  // ------------------------------
+  if (sessionStorage.getItem("adminLogged") === "true") {
+    loginSection.style.display = "none";
+    dashboardSection.style.display = "block";
+  }
+});
     /* ===== SIDEBAR ===== */
     .sidebar{
       width:260px;
@@ -232,3 +291,4 @@ function showSection(id){
 
 </body>
 </html>
+
